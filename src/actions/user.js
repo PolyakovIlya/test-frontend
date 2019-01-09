@@ -19,9 +19,9 @@ const login = (username, password) => {
                 },
                 error => {
                     dispatch(failure(error));
-                    dispatch(alertActions.addAlert('error', error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
-            );
+            )
     };
 };
 

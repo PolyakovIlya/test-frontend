@@ -50,11 +50,8 @@ class AdminSuggestions extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const { suggestions } = state;
-    return {
-        suggestions
-    };
-}
+const mapStateToProps = state => ({
+    suggestions: state.suggestions
+});
 
-export default AdminSuggestions = connect(mapStateToProps)(AdminSuggestions);
+export default connect(mapStateToProps)(AdminSuggestions);

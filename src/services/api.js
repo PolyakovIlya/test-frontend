@@ -21,14 +21,14 @@ const request = (method, path, body) => {
 
     return fetch(url, options)
         .then(handleResponse)
-        .then(response => response)
+        .then(response => response);
 };
 
 const handleResponse = (response) => {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
         if (!response.ok) {
-            const error = (data && data.message) || response.statusText;
+            const error = (data && data.error) || response.statusText;
             return Promise.reject(error);
         }
 

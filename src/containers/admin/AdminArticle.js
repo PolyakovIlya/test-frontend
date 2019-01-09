@@ -127,8 +127,6 @@ class AdminArticle extends Component {
     }
 
     render() {
-        console.log(this.state.currentParagraph)
-
         return (
             <>
                 <BackBtn/>
@@ -147,17 +145,14 @@ class AdminArticle extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const { suggestions, article } = state;
-    return {
-        suggestions,
-        article
-    };
-};
+const mapStateToProps = state => ({
+    suggestions: state.suggestions,
+    article: state.article
+});
 
 const mapDispatchToProps = (dispatch, props) => ({
     fetchArticle: () => dispatch(articleActions.getArticle(props.match.params['id'])),
     fetchSuggestionsByArticle: () => dispatch(suggestionActions.getSuggestionsByArticle(props.match.params['id']))
 });
 
-export default AdminArticle = connect(mapStateToProps, mapDispatchToProps)(AdminArticle);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminArticle);

@@ -22,14 +22,14 @@ class AdminArticles extends Component {
     }
 
     renderArticles() {
-        const { user, articles } = this.props;
+        const { authentication, articles } = this.props;
         if(!articles.length) return null;
 
         return (
             articles.map((article, index) => (
                 <ArticleBlock
                     article={article}
-                    isAdmin={user.isAdmin}
+                    isAdmin={authentication.isAdmin}
                     key={index}
                     handleDelete={this.onClickDelete.bind(this)}
                 />
@@ -71,13 +71,9 @@ class AdminArticles extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const { authentication, articles } = state;
-    const {user} = authentication;
-    return {
-        user,
-        articles
-    };
-}
+const mapStateToProps = state => ({
+    authentication: state.authentication,
+    articles: state.articles
+});
 
-export default AdminArticles = connect(mapStateToProps)(AdminArticles);
+export default connect(mapStateToProps)(AdminArticles);
