@@ -30,7 +30,7 @@ class AdminArticle extends Component {
     }
 
     renderParagraphList() {
-        const {article} = this.props;
+        const {article, user} = this.props;
 
         if(!article && !article.paragraphs) return null;
         const paragraphs = article.paragraphs || [];
@@ -39,6 +39,7 @@ class AdminArticle extends Component {
             paragraphs.map((p, i) => {
                 return (
                     <Paragraph
+                        isAdmin={user.isAdmin}
                         handleSuggestionCreation={this.createSuggestion.bind(this)}
                         onClickParagraph={() => this.setState({currentParagraph: i})}
                         articleId={this.props.match.params['id']}
@@ -146,6 +147,7 @@ class AdminArticle extends Component {
 }
 
 const mapStateToProps = state => ({
+    user: state.authentication.user,
     suggestions: state.suggestions,
     article: state.article
 });

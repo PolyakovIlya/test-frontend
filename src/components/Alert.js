@@ -7,6 +7,7 @@ class Alert extends Component {
             'error': '#AA3939',
             'info': '#5e87ac',
             'warning': '#e6c040',
+            'success': '#329c5b'
         };
 
         return (

@@ -1,5 +1,6 @@
 import { articleConstants } from '../constants';
 import { articleService } from '../services';
+import { alertActions } from './alert';
 
 const getArticles = () => {
     const request = () => ({ type: articleConstants.ARTICLES_REQUEST });
@@ -16,7 +17,7 @@ const getArticles = () => {
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };
@@ -37,7 +38,7 @@ const getArticle = (id) => {
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };
@@ -55,10 +56,11 @@ const createArticle = (data) => {
             .then(
                 article => {
                     dispatch(success(article));
+                    dispatch(alertActions.addAlert('success', 'Successfully added article!'));
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };

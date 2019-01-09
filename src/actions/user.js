@@ -50,7 +50,7 @@ const register = (data) => {
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };

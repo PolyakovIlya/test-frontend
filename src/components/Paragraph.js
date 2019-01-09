@@ -12,7 +12,7 @@ class Paragraph extends Component {
     }
 
     editClick = () => {
-        const {index, paragraph} = this.props;
+        const {paragraph} = this.props;
         this.setState((state) => ({
             editor: !state.editor,
             text: paragraph
@@ -59,11 +59,11 @@ class Paragraph extends Component {
     }
 
     renderView() {
-        const {paragraph, onClickParagraph} = this.props;
+        const {paragraph, onClickParagraph, isAdmin} = this.props;
 
         return (
             <>
-                <p onClick={() => onClickParagraph()} className="text">{paragraph}</p>
+                <p onClick={() => isAdmin && onClickParagraph()} className="text">{paragraph}</p>
                 <button className="editorBtn" onClick={this.editClick}>Edit</button>
                 {this.renderCancelBtn()}
             </>
