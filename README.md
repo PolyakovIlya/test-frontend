@@ -3,6 +3,7 @@
 #### For user
 
 - User can Sign in or Sign up as default user<br>
+- User can receive alert notifications after actions<br>
 - On the home page:<br>
     * User can logout<br>
     * User can view list of articles included: title, creation date and part of paragraph<br>
@@ -16,6 +17,7 @@
 #### For editor
 
 - User can Sign in or Sign up as editor (set checkbox while signing up)<br>
+- Editor can receive alert notifications after actions<br>
 - On the home page:<br>
     * Editor can logout<br>
     * Editor can add new article from 'https://www.dagbladet.no'<br>

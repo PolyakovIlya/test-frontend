@@ -11,7 +11,7 @@ class Navbar extends Component {
     }
 
     renderAdmin() {
-        const { user } = this.props.authentication;
+        const { user } = this.props;
 
         return (
             <>
@@ -62,7 +62,7 @@ class Navbar extends Component {
     }
 
     renderUser() {
-        const { user } = this.props.authentication;
+        const { user } = this.props;
 
         return (
             <>
@@ -78,7 +78,7 @@ class Navbar extends Component {
     }
 
     render() {
-        const { user } = this.props.authentication;
+        const { user } = this.props;
         let content = null;
 
         if(!user) {
@@ -98,7 +98,7 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = state => ({
-    authentication: state.authentication
+    user: state.authentication.user
 });
 
 export default connect(mapStateToProps)(Navbar);

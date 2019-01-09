@@ -47,14 +47,17 @@ class AdminArticles extends Component {
 
         const {dispatch} = this.props;
         const {url} = this.state;
-        dispatch(articleActions.createArticle(url));
+
+        dispatch(articleActions.createArticle(url)).then(() => {
+            this.setState({url: ''});
+        });
     }
 
     renderAddArticleForm() {
         return (
             <div className="articleForm">
                 <form name="from" onSubmit={this.onSubmitArticleForm}>
-                    <input type="text" className="inputForm" name="url" onChange={this.onInputUrl} placeholder="Enter article url"/>
+                    <input type="text" className="inputForm" name="url" value={this.state.url} onChange={this.onInputUrl} placeholder="Enter article url"/>
                     <button type="submit" className="button addButton">Add</button>
                 </form>
             </div>

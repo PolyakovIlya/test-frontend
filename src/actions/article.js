@@ -52,7 +52,7 @@ const createArticle = (data) => {
     return dispatch => {
         dispatch(request(data));
 
-        articleService.createArticle(data)
+        return articleService.createArticle(data)
             .then(
                 article => {
                     dispatch(success(article));
