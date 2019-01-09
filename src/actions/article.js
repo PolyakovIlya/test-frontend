@@ -1,16 +1,7 @@
 import { articleConstants } from '../constants';
 import { articleService } from '../services';
 
-export const articleActions = {
-    getArticles,
-    getArticle,
-    deleteArticle,
-    createArticle,
-    updateArticleParagraph
-};
-
-
-function getArticles() {
+const getArticles = () => {
     const request = () => ({ type: articleConstants.ARTICLES_REQUEST });
     const success = (articles) => ({ type: articleConstants.ARTICLES_SUCCESS, articles });
     const failure = (error) => ({ type: articleConstants.ARTICLES_FAILURE, error });
@@ -29,9 +20,9 @@ function getArticles() {
                 }
             );
     };
-}
+};
 
-function getArticle (id) {
+const getArticle = (id) => {
     const request = (id) => ({ type: articleConstants.ARTICLE_REQUEST, id });
     const success = (article) => ({ type: articleConstants.ARTICLE_SUCCESS, article });
     const failure = (error) => ({ type: articleConstants.ARTICLE_FAILURE, error });
@@ -50,9 +41,9 @@ function getArticle (id) {
                 }
             );
     };
-}
+};
 
-function createArticle (data) {
+const createArticle = (data) => {
     const request = (data) => ({ type: articleConstants.CREATE_ARTICLE_REQUEST, data });
     const success = (article) => ({ type: articleConstants.CREATE_ARTICLE_SUCCESS, article });
     const failure = (error) => ({ type: articleConstants.CREATE_ARTICLE_FAILURE, error });
@@ -71,9 +62,9 @@ function createArticle (data) {
                 }
             );
     };
-}
+};
 
-function deleteArticle(id) {
+const deleteArticle = (id) => {
     const request = (id) => ({ type: articleConstants.DELETE_ARTICLE_REQUEST, id });
     const success = (payload) => ({ type: articleConstants.DELETE_ARTICLE_SUCCESS, payload });
     const failure = (error) => ({ type: articleConstants.DELETE_ARTICLE_FAILURE, error });
@@ -92,8 +83,16 @@ function deleteArticle(id) {
                 }
             );
     };
-}
+};
 
-function updateArticleParagraph(id, text) {
+const updateArticleParagraph = (id, text) => {
     return ({ type: articleConstants.UPDATE_ARTICLE_PARAGRAPH, id, text })
-}
+};
+
+export const articleActions = {
+    getArticles,
+    getArticle,
+    deleteArticle,
+    createArticle,
+    updateArticleParagraph
+};

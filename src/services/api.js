@@ -12,7 +12,7 @@ const headers = () => {
 };
 
 const request = (method, path, body) => {
-    const url = `${config.apiUrl}/${path}`;
+    const url = `${config.apiUrl}${path}`;
     const options = { method, headers: headers()};
 
     if(body) {

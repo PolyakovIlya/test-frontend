@@ -47,7 +47,6 @@ class AdminArticles extends Component {
 
         const {dispatch} = this.props;
         const {url} = this.state;
-        console.log(url)
         dispatch(articleActions.createArticle(url));
     }
 

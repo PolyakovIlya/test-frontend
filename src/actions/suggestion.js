@@ -1,15 +1,7 @@
 import { suggestionConstants } from '../constants';
 import { suggestionService } from '../services';
 
-export const suggestionActions = {
-    createSuggestion,
-    getSuggestionsByArticle,
-    removeSuggestion,
-    getSuggestions,
-    updateSuggestion
-}
-
-function createSuggestion(id, data) {
+const createSuggestion = (id, data) => {
     const request = (id, data) => ({ type: suggestionConstants.CREATE_SUGGESTION_REQUEST, id, data });
     const success = (suggestion) => ({ type: suggestionConstants.CREATE_SUGGESTION_SUCCESS, suggestion });
     const failure = (error) => ({ type: suggestionConstants.CREATE_SUGGESTION_FAILURE, error });
@@ -29,9 +21,9 @@ function createSuggestion(id, data) {
                 }
             );
     };
-}
+};
 
-function updateSuggestion(id, status) {
+const updateSuggestion = (id, status) => {
     const request = (id, status) => ({ type: suggestionConstants.UPDATE_SUGGESTION_REQUEST, id, status });
     const success = (payload) => ({ type: suggestionConstants.UPDATE_SUGGESTION_SUCCESS, payload });
     const failure = (error) => ({ type: suggestionConstants.UPDATE_SUGGESTION_FAILURE, error });
@@ -51,9 +43,9 @@ function updateSuggestion(id, status) {
                 }
             );
     };
-}
+};
 
-function getSuggestions() {
+const getSuggestions = () => {
     const request = () => ({ type: suggestionConstants.GET_SUGGESTIONS_REQUEST });
     const success = (suggestions) => ({ type: suggestionConstants.GET_SUGGESTIONS_SUCCESS, suggestions });
     const failure = (error) => ({ type: suggestionConstants.GET_SUGGESTIONS_FAILURE, error });
@@ -72,9 +64,9 @@ function getSuggestions() {
                 }
             );
     };
-}
+};
 
-function getSuggestionsByArticle(id) {
+const getSuggestionsByArticle = (id) => {
     const request = (id) => ({ type: suggestionConstants.GET_SUGGESTIONS_BY_ARTICLE_REQUEST, id });
     const success = (suggestions) => ({ type: suggestionConstants.GET_SUGGESTIONS_BY_ARTICLE_SUCCESS, suggestions });
     const failure = (error) => ({ type: suggestionConstants.GET_SUGGESTIONS_BY_ARTICLE_FAILURE, error });
@@ -93,9 +85,9 @@ function getSuggestionsByArticle(id) {
                 }
             );
     };
-}
+};
 
-function removeSuggestion(id) {
+const removeSuggestion = (id) => {
     const request = (id) => ({ type: suggestionConstants.REMOVE_SUGGESTION_REQUEST, id });
     const success = (data) => ({ type: suggestionConstants.REMOVE_SUGGESTION_SUCCESS, data });
     const failure = (error) => ({ type: suggestionConstants.REMOVE_SUGGESTION_FAILURE, error });
@@ -114,5 +106,13 @@ function removeSuggestion(id) {
                 }
             );
     };
-}
+};
+
+export const suggestionActions = {
+    createSuggestion,
+    getSuggestionsByArticle,
+    removeSuggestion,
+    getSuggestions,
+    updateSuggestion
+};
 

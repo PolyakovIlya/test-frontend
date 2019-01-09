@@ -3,7 +3,6 @@ import api from './api';
 const login = (username, password) => {
     return api.post(`/users/login`, {user:{username, password}})
         .then(user => {
-            console.log('user', user)
             if (user.token) {
                 localStorage.setItem('user', JSON.stringify({
                     username: user.username,

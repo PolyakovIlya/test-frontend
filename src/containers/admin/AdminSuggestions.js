@@ -16,14 +16,11 @@ class AdminSuggestions extends Component {
 
     onClickDelete(id) {
         const {dispatch} = this.props;
-        console.log(this, id);
         dispatch(suggestionActions.removeSuggestion(id));
     }
 
     onClickStatus(id, status) {
         const {dispatch} = this.props;
-
-        console.log(this, id, status);
 
         dispatch(suggestionActions.updateSuggestion(id, status));
     }

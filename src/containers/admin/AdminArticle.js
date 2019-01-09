@@ -32,8 +32,6 @@ class AdminArticle extends Component {
     renderParagraphList() {
         const {article} = this.props;
 
-        console.log(this.props)
-
         if(!article && !article.paragraphs) return null;
         const paragraphs = article.paragraphs || [];
 
