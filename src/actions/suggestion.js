@@ -108,11 +108,14 @@ const removeSuggestion = (id) => {
     };
 };
 
+const setSuggestionFilter = (status) => ({ type: suggestionConstants.SET_SUGGESTION_FILTER, status });
+
 export const suggestionActions = {
     createSuggestion,
     getSuggestionsByArticle,
     removeSuggestion,
     getSuggestions,
-    updateSuggestion
+    updateSuggestion,
+    setSuggestionFilter
 };
 

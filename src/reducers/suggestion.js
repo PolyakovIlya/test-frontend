@@ -61,8 +61,16 @@ const suggestions = (state = initialState, action) => {
         default:
             return state
     }
-}
+};
+
+const suggestionFilter = (state = 'all', action) => {
+    switch (action.type) {
+        case suggestionConstants.SET_SUGGESTION_FILTER:
+            return action.status;
+        default:
+            return state
+    }
+};
 
 
-
-export default suggestions
+export { suggestions, suggestionFilter };

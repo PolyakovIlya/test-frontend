@@ -31,6 +31,7 @@
     * Editor can delete suggestion<br>
 - On the suggestions page:<br>
     * Editor can view suggestion list<br>
+    * Editor can filter suggestion by status<br>
     * Editor can approve of decline suggestion<br>
     * Editor can delete suggestion<br>
 

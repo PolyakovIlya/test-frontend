@@ -1,16 +1,15 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { suggestionActions } from '../../actions';
-import ArticleBlock from '../../components/ArticleBlock';
+import {alertActions, suggestionActions} from '../../actions';
 import './AdminSuggestions.scss'
 import Suggestion from '../../components/Suggestion';
+import Alert from "../../components/Alert";
 
 class AdminSuggestions extends Component {
     constructor(props) {
         super(props);
-
         const {dispatch} = this.props;
+
         dispatch(suggestionActions.getSuggestions());
     }
 
@@ -25,9 +24,36 @@ class AdminSuggestions extends Component {
         dispatch(suggestionActions.updateSuggestion(id, status));
     }
 
+    renderStatusFilter() {
+        const {dispatch, suggestionFilter} = this.props;
+
+        const filters = [
+            'all',
+            'approved',
+            'declined',
+            'pending'
+        ];
+
+        return (
+            <div className="statusFilter">
+                <div className="label">Status filter: </div>
+                <select
+                    onChange={(e) => dispatch(suggestionActions.setSuggestionFilter(e.target.value))}
+                    defaultValue={suggestionFilter || null}
+                >
+                    {filters.map((f, i) => {
+                        return (
+                            <option value={f} key={i}>{f}</option>
+                        );
+                    })}
+                </select>
+            </div>
+        );
+    }
+
     renderSuggestions() {
         const { suggestions } = this.props;
-        if(!suggestions.length) return null;
+        if(!suggestions.length) return <span className="noResults">There are no results!</span>;
 
         return (
             suggestions.map((s, index) => (
@@ -44,6 +70,7 @@ class AdminSuggestions extends Component {
     render() {
         return (
             <div className="container">
+                {this.renderStatusFilter()}
                 {this.renderSuggestions()}
             </div>
         )
@@ -51,7 +78,10 @@ class AdminSuggestions extends Component {
 }
 
 const mapStateToProps = state => ({
-    suggestions: state.suggestions
+    suggestionFilter: state.suggestionFilter,
+    suggestions: state.suggestionFilter === 'all'
+        ? state.suggestions
+        : state.suggestions.filter((s) => (state.suggestionFilter === s.status))
 });
 
 export default connect(mapStateToProps)(AdminSuggestions);
