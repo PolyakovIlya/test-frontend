@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+@import "../../styles/notifications";
+@import "../../styles/form";
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+
+
+  .login {
+    flex: 0 0 auto;
+    width: 380px;
+    background: $color-primary;
+    padding: 5rem 3rem 3rem 3rem;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.30);
+    position: relative;
+    border-radius: 5px;
+
+    .authHeader {
+      font-size: 20px;
+      margin-bottom: 2rem;
+      color: $color-secondary;
+    }
+
+    .loginForm {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+}
