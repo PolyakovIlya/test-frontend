@@ -78,10 +78,11 @@ const deleteArticle = (id) => {
             .then(
                 payload => {
                     dispatch(success(payload));
+                    dispatch(alertActions.addAlert('success', payload.message));
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };

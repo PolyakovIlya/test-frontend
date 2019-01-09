@@ -1,5 +1,6 @@
 import { suggestionConstants } from '../constants';
 import { suggestionService } from '../services';
+import { alertActions } from './alert';
 
 const createSuggestion = (id, data) => {
     const request = (id, data) => ({ type: suggestionConstants.CREATE_SUGGESTION_REQUEST, id, data });
@@ -13,11 +14,12 @@ const createSuggestion = (id, data) => {
             .then(
                 suggestion => {
                     dispatch(success(suggestion));
+                    dispatch(alertActions.addAlert('success', suggestion.message));
                     return suggestion
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };
@@ -35,11 +37,12 @@ const updateSuggestion = (id, status) => {
             .then(
                 payload => {
                     dispatch(success(payload));
+                    dispatch(alertActions.addAlert('success', payload.message));
                     return payload;
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };
@@ -60,7 +63,7 @@ const getSuggestions = () => {
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };
@@ -81,7 +84,7 @@ const getSuggestionsByArticle = (id) => {
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };
@@ -99,10 +102,11 @@ const removeSuggestion = (id) => {
             .then(
                 payload => {
                     dispatch(success(payload));
+                    dispatch(alertActions.addAlert('success', payload.message));
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error.message));
                 }
             );
     };
