@@ -3,7 +3,10 @@ import config from '../config/config';
 const headers = () => {
     const h = new Headers();
     h.append('Content-Type', 'application/json');
-    h.append('x-access-token', JSON.parse(localStorage.user).token);
+
+    if(localStorage.user) {
+        h.append('x-access-token', JSON.parse(localStorage.user).token);
+    }
 
     return h;
 };

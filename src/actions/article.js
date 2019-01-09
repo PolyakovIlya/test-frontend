@@ -7,7 +7,7 @@ export const articleActions = {
     deleteArticle,
     createArticle,
     updateArticleParagraph
-}
+};
 
 
 function getArticles() {

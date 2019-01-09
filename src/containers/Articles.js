@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch) => ({
     fetchArticles: () => dispatch(articleActions.getArticles())
 });
 
-export default Articles = connect(mapStateToProps, mapDispatchToProps)(Articles);
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);

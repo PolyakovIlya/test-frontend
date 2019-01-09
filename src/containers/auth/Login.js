@@ -24,6 +24,7 @@ class Login extends Component {
 
         const {username, password} = this.state;
         const {dispatch} = this.props;
+
         if(username && password) {
             dispatch(userActions.login(username, password));
         }
@@ -48,11 +49,8 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const { loggingIn } = state.authentication;
-    return {
-        loggingIn
-    };
-}
+const mapStateToProps = state => ({
+    loggingIn: state.authentication
+});
 
-export default Login = connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login);

@@ -1,14 +1,9 @@
 import { userConstants } from '../constants';
 import { userService } from '../services';
+import { alertActions } from './alert';
 import history from '../store/history';
 
-export const userActions = {
-    login,
-    register,
-    logout
-}
-
-function login(username, password) {
+const login = (username, password) => {
     const request = (user) => ({ type: userConstants.LOGIN_REQUEST, user });
     const success = (user) => ({ type: userConstants.LOGIN_SUCCESS, user });
     const failure = (error) => ({ type: userConstants.LOGIN_FAILURE, error });
@@ -24,22 +19,22 @@ function login(username, password) {
                 },
                 error => {
                     dispatch(failure(error));
-                    // dispatch(alertActions.error(error));
+                    dispatch(alertActions.addAlert('error', error));
                 }
             );
     };
-}
+};
 
-function logout() {
+const logout = () => {
     return dispatch => {
         dispatch({type: userConstants.LOGOUT});
 
         userService.logout();
         history.push('/login');
     };
-}
+};
 
-function register(data) {
+const register = (data) => {
     const request = (user) => ({ type: userConstants.LOGIN_REQUEST, user });
     const success = (user) => ({ type: userConstants.LOGIN_SUCCESS, user });
     const failure = (error) => ({ type: userConstants.LOGIN_FAILURE, error });
@@ -59,4 +54,10 @@ function register(data) {
                 }
             );
     };
-}
+};
+
+export const userActions = {
+    login,
+    register,
+    logout
+};

@@ -97,11 +97,8 @@ class Navbar extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const { authentication } = state;
-    return {
-        authentication
-    };
-}
+const mapStateToProps = state => ({
+    authentication: state.authentication
+});
 
 export default connect(mapStateToProps)(Navbar);

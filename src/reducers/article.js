@@ -37,7 +37,7 @@ const articles = (state = initialState, action) => {
         default:
             return state
     }
-}
+};
 
 const article = (state = {}, action) => {
     switch (action.type) {
@@ -63,6 +63,6 @@ const article = (state = {}, action) => {
         default:
             return state
     }
-}
+};
 
 export {articles, article}

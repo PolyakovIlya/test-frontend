@@ -10,18 +10,20 @@ import Article from './Article';
 
 import AdminArticles from './admin/AdminArticles';
 import AdminArticle from './admin/AdminArticle';
+import AdminSuggestions from './admin/AdminSuggestions';
 
 import requireAuth from '../guards/requireAuth'
 import permission from "../guards/permission";
 
 import './App.scss';
 import Navbar from './Navbar';
-import AdminSuggestions from './admin/AdminSuggestions';
+import Alerts from './Alerts';
 
 const App = () => (
     <Router history={history}>
         <div className="body">
             <Navbar/>
+            <Alerts/>
 
             <Route exact path="/" component={requireAuth(Articles)} />
             <Route path="/article/:id" component={requireAuth(Article)} />

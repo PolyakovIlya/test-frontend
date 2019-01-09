@@ -63,11 +63,8 @@ class Article extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const { article } = state;
-    return {
-        article
-    };
-}
+const mapStateToProps = state => ({
+    article: state.article
+});
 
-export default Article = connect(mapStateToProps)(Article);
+export default connect(mapStateToProps)(Article);
