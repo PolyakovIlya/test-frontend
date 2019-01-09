@@ -2,7 +2,24 @@ import React, { Component } from 'react';
 import './Alert.scss';
 
 class Alert extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        const { onDismissClick } = this.props;
+        this.timeout = setTimeout(() => {
+            onDismissClick();
+        }, 4000);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
+    }
+
     render() {
+        const { errorType, text, onDismissClick } = this.props;
+
         const color = {
             'error': '#AA3939',
             'info': '#5e87ac',
@@ -11,11 +28,11 @@ class Alert extends Component {
         };
 
         return (
-            <li className="alert" style={{ backgroundColor: color[this.props.errorType] }}>
+            <li className="alert" style={{ backgroundColor: color[errorType] }}>
                 <p className="content">
-                    {this.props.text}
+                    {text}
                 </p>
-                <button className="dismiss" onClick={this.props.onDismissClick}>
+                <button className="dismiss" onClick={onDismissClick}>
                     x
                 </button>
             </li>
