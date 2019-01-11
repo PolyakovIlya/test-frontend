@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './ArticleBlock.scss';
 
 class ArticleBlock extends Component {
@@ -50,5 +51,16 @@ class ArticleBlock extends Component {
         )
     }
 }
+
+ArticleBlock.propTypes = {
+    article: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        createdAt: PropTypes.string,
+        paragraphs: PropTypes.array.isRequired
+    }).isRequired,
+    isAdmin: PropTypes.bool,
+    handleDelete: PropTypes.func
+};
 
 export default ArticleBlock;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Alert.scss';
 
 class Alert extends Component {
@@ -43,5 +44,11 @@ class Alert extends Component {
         return false;
     }
 }
+
+Alert.propTypes = {
+    errorType: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    onDismissClick: PropTypes.func,
+};
 
 export default Alert;

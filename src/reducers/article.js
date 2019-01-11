@@ -1,14 +1,30 @@
 import {articleConstants} from '../constants';
 
-const initialState = [];
+const initialState = {
+    data: [],
+    meta: {
+        page: 1
+    }
+};
 
 const articles = (state = initialState, action) => {
     switch(action.type) {
         case articleConstants.ARTICLES_REQUEST:
-            return state;
+            return {
+                ...state,
+                meta: {
+                    ...state.meta,
+                    ...action.meta,
+                }
+            };
 
         case articleConstants.ARTICLES_SUCCESS:
-            return action.articles;
+            return {
+                data: action.articles.articles,
+                meta: {
+                    ...action.articles.meta,
+                }
+            };
 
         case articleConstants.ARTICLES_FAILURE:
             return {};

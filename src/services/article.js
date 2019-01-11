@@ -1,7 +1,7 @@
 import api from './api';
 
-const getArticles = () => {
-    return api.get(`/articles`)
+const getArticles = (page) => {
+    return api.get(`/articles/?page=${page}` )
         .then(articles => {
             return articles;
         });

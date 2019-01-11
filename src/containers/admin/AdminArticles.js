@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { articleActions } from '../../actions';
 import ArticleBlock from '../../components/ArticleBlock';
+import Pagination from '../../components/Pagination';
 import './AdminArticles.scss'
 
 class AdminArticles extends Component {
@@ -11,9 +12,10 @@ class AdminArticles extends Component {
         this.state = {
             url: ''
         };
+    }
 
-        const {dispatch} = this.props;
-        dispatch(articleActions.getArticles());
+    componentDidMount() {
+        this.props.fetchArticles();
     }
 
     onClickDelete(id) {
@@ -22,7 +24,7 @@ class AdminArticles extends Component {
     }
 
     renderArticles() {
-        const { user, articles } = this.props;
+        const { user, articles, pagination } = this.props;
         if(!articles.length) return null;
 
         return (
@@ -65,10 +67,13 @@ class AdminArticles extends Component {
     }
 
     render() {
+        const {pagination} = this.props;
+
         return (
             <div className="container">
                 {this.renderAddArticleForm()}
                 {this.renderArticles()}
+                <Pagination pagination={pagination}/>
             </div>
         )
     }
@@ -76,7 +81,12 @@ class AdminArticles extends Component {
 
 const mapStateToProps = state => ({
     user: state.authentication.user,
-    articles: state.articles
+    articles: state.articles.data,
+    pagination: state.articles.meta
 });
 
-export default connect(mapStateToProps)(AdminArticles);
+const mapDispatchToProps = (dispatch) => ({
+    fetchArticles: () => dispatch(articleActions.getArticles())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminArticles);

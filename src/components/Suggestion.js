@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './Suggestion.scss'
 
 class Suggestion extends Component {
@@ -59,6 +60,17 @@ class Suggestion extends Component {
         )
     }
 }
+
+Suggestion.propTypes = {
+    suggestion: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        status: PropTypes.string.isRequired
+    }).isRequired,
+    articleId: PropTypes.string,
+    handleSuggestionDelete: PropTypes.func.isRequired,
+    handleSuggestionStatus: PropTypes.func.isRequired
+};
 
 export default Suggestion;
 

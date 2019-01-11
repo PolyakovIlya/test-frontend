@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './Paragraph.scss';
 
 class Paragraph extends Component {
@@ -78,6 +79,15 @@ class Paragraph extends Component {
         )
     }
 }
+
+Paragraph.propTypes = {
+    articleId: PropTypes.string.isRequired,
+    isAdmin: PropTypes.bool,
+    index: PropTypes.number.isRequired,
+    paragraph: PropTypes.string.isRequired,
+    handleSuggestionCreation: PropTypes.func.isRequired,
+    onClickParagraph: PropTypes.func
+};
 
 export default Paragraph;
 

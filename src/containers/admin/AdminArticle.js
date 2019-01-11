@@ -61,7 +61,6 @@ class AdminArticle extends Component {
         const {dispatch} = this.props;
 
         dispatch(suggestionActions.updateSuggestion(id, status)).then((result) => {
-            console.log(result);
 
             if(status === 'approved') {
                 const { paragraph_id, text } = result.data;

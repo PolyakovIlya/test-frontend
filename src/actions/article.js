@@ -2,15 +2,17 @@ import { articleConstants } from '../constants';
 import { articleService } from '../services';
 import { alertActions } from './alert';
 
-const getArticles = () => {
-    const request = () => ({ type: articleConstants.ARTICLES_REQUEST });
+const getArticles = (data) => {
+    const request = (query) => ({ type: articleConstants.ARTICLES_REQUEST, query });
     const success = (articles) => ({ type: articleConstants.ARTICLES_SUCCESS, articles });
     const failure = (error) => ({ type: articleConstants.ARTICLES_FAILURE, error });
 
-    return dispatch => {
-        dispatch(request());
+    return (dispatch, getState) => {
+        const { page } = data || getState().articles.meta;
 
-        articleService.getArticles()
+        dispatch(request(page));
+
+        articleService.getArticles(page)
             .then(
                 articles => {
                     dispatch(success(articles));
