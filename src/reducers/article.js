@@ -33,10 +33,15 @@ const articles = (state = initialState, action) => {
             return state;
 
         case articleConstants.CREATE_ARTICLE_SUCCESS:
-            return [
-                action.article,
-                ...state
-            ];
+            return {
+                data: [
+                    action.article,
+                    ...state.data
+                ],
+                meta: {
+                    ...state.meta,
+                }
+            };
 
         case articleConstants.CREATE_ARTICLE_FAILURE:
             return {};
@@ -45,7 +50,14 @@ const articles = (state = initialState, action) => {
             return state;
 
         case articleConstants.DELETE_ARTICLE_SUCCESS:
-            return state.filter((item) => (item.id !== parseInt(action.payload.id)));
+            return {
+                data: [
+                    ...state.data.filter((item) => item.id !== parseInt(action.payload.id))
+                ],
+                meta: {
+                    ...state.meta,
+                }
+            };
 
         case articleConstants.DELETE_ARTICLE_FAILURE:
             return {};
