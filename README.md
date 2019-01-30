@@ -14,6 +14,7 @@
     * User can edit any paragraph and automatically create suggestion<br>
     * User can cancel paragraph editing<br>
     * User can use pagination for articles<br>
+    * While data is fetching user see animated loader<br> 
     
 #### For editor
 
@@ -33,6 +34,7 @@
     * Editor can approve of decline suggestion<br>
     * Editor can delete suggestion<br>
     * Editor can use pagination for articles<br>
+    * While data is fetching editor see animated loader<br> 
 - On the suggestions page:<br>
     * Editor can view suggestion list<br>
     * Editor can filter suggestion by status<br>
