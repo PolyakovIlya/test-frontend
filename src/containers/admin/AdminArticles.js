@@ -4,6 +4,7 @@ import { articleActions } from '../../actions';
 import ArticleBlock from '../../components/ArticleBlock';
 import Pagination from '../../components/Pagination';
 import './AdminArticles.scss'
+import Loader from '../../components/Loader';
 
 class AdminArticles extends Component {
     constructor(props) {
@@ -24,8 +25,9 @@ class AdminArticles extends Component {
     }
 
     renderArticles() {
-        const { user, articles } = this.props;
-        if(!articles.length) return null;
+        const { user, articles, isLoading } = this.props;
+
+        if(isLoading) return <Loader/>;
 
         return (
             articles.map((article, index) => (
@@ -59,7 +61,14 @@ class AdminArticles extends Component {
         return (
             <div className="articleForm">
                 <form name="from" onSubmit={this.onSubmitArticleForm}>
-                    <input type="text" className="inputForm" name="url" value={this.state.url} onChange={this.onInputUrl} placeholder="Enter article url"/>
+                    <input
+                        type="text"
+                        className="inputForm"
+                        name="url"
+                        value={this.state.url}
+                        onChange={this.onInputUrl}
+                        placeholder="Enter article url"
+                    />
                     <button type="submit" className="button addButton">Add</button>
                 </form>
             </div>
@@ -82,7 +91,8 @@ class AdminArticles extends Component {
 const mapStateToProps = state => ({
     user: state.authentication.user,
     articles: state.articles.data,
-    pagination: state.articles.meta
+    pagination: state.articles.meta,
+    isLoading: state.articles.isLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({

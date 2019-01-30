@@ -15,7 +15,8 @@ const articles = (state = initialState, action) => {
                 meta: {
                     ...state.meta,
                     ...action.meta,
-                }
+                },
+                isLoading: true
             };
 
         case articleConstants.ARTICLES_SUCCESS:
@@ -23,14 +24,18 @@ const articles = (state = initialState, action) => {
                 data: action.articles.articles,
                 meta: {
                     ...action.articles.meta,
-                }
+                },
+                isLoading: false
             };
 
         case articleConstants.ARTICLES_FAILURE:
             return {};
 
         case articleConstants.CREATE_ARTICLE_REQUEST:
-            return state;
+            return {
+                ...state,
+                isLoading: true
+            };
 
         case articleConstants.CREATE_ARTICLE_SUCCESS:
             return {
@@ -40,7 +45,8 @@ const articles = (state = initialState, action) => {
                 ],
                 meta: {
                     ...state.meta,
-                }
+                },
+                isLoading: false
             };
 
         case articleConstants.CREATE_ARTICLE_FAILURE:
@@ -70,7 +76,10 @@ const articles = (state = initialState, action) => {
 const article = (state = {}, action) => {
     switch (action.type) {
         case articleConstants.ARTICLE_REQUEST:
-            return state;
+            return {
+                ...state,
+                isLoading: true
+            };
 
         case articleConstants.ARTICLE_SUCCESS:
             return action.article;
