@@ -2,14 +2,10 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { articleActions } from '../actions';
 import ArticleBlock from '../components/ArticleBlock';
-import './Articles.scss';
 import Pagination from '../components/Pagination';
+import './Articles.scss';
 
 class Articles extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.fetchArticles();
     }

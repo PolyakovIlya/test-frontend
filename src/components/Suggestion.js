@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import './Suggestion.scss'
 
 class Suggestion extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     renderButtons() {
         const {suggestion} = this.props;
         if(suggestion.status !== 'pending') return null;

@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import './ArticleBlock.scss';
 
 class ArticleBlock extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     renderContent() {
         const { article } = this.props;
 

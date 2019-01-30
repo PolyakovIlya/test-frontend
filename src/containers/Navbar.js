@@ -6,10 +6,6 @@ import { Link } from 'react-router-dom';
 import './Navbar.scss';
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     renderAdmin() {
         const { user } = this.props;
 

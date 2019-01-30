@@ -4,10 +4,6 @@ import Alert from '../components/Alert';
 import { alertActions } from '../actions';
 
 class Alerts extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { alerts, dispatch } = this.props;
 

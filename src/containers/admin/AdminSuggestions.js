@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import {alertActions, suggestionActions} from '../../actions';
-import './AdminSuggestions.scss'
+import { suggestionActions } from '../../actions';
 import Suggestion from '../../components/Suggestion';
-import Alert from "../../components/Alert";
+import './AdminSuggestions.scss'
 
 class AdminSuggestions extends Component {
     constructor(props) {

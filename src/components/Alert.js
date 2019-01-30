@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import './Alert.scss';
 
 class Alert extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         const { onDismissClick } = this.props;
         this.timeout = setTimeout(() => {

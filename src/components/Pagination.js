@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
+import { articleActions } from '../actions';
 import './Pagination.scss';
-import {articleActions} from '../actions';
 
 class Pagination extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     renderPrevious() {
         const { page } = this.props.pagination;
 
@@ -90,7 +86,7 @@ class Pagination extends Component {
 }
 
 Pagination.propTypes = {
-
+    pagination: PropTypes.shape().isRequired
 };
 
 export default connect()(Pagination);

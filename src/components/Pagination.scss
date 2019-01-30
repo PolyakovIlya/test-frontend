@@ -38,7 +38,8 @@
 
   .active {
     background: $background-primary;
-    color: $color-primary
+    color: $color-primary;
+    pointer-events: none;
   }
 
   .list {

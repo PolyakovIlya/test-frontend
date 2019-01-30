@@ -24,7 +24,7 @@ class AdminArticles extends Component {
     }
 
     renderArticles() {
-        const { user, articles, pagination } = this.props;
+        const { user, articles } = this.props;
         if(!articles.length) return null;
 
         return (
