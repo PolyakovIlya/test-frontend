@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { articleActions } from '../actions';
 import ArticleBlock from '../components/ArticleBlock';
 import Pagination from '../components/Pagination';
+import Loader from '../components/Loader';
 import './Articles.scss';
 
 class Articles extends Component {
@@ -11,8 +12,9 @@ class Articles extends Component {
     }
 
     renderArticles() {
-        const { articles } = this.props;
-        if(!articles.length) return null;
+        const { articles, isLoading } = this.props;
+
+        if(isLoading) return <Loader/>;
 
         return (
             articles.map((article) => (
@@ -36,7 +38,8 @@ class Articles extends Component {
 const mapStateToProps = state => ({
     user: state.authentication.user,
     articles: state.articles.data,
-    pagination: state.articles.meta
+    pagination: state.articles.meta,
+    isLoading: state.articles.isLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({
