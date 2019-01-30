@@ -13,6 +13,7 @@
     * User can see title and all paragraphs<br>
     * User can edit any paragraph and automatically create suggestion<br>
     * User can cancel paragraph editing<br>
+    * User can use pagination for articles<br>
     
 #### For editor
 
@@ -31,6 +32,7 @@
     * Editor can choose paragraph and see list of provided suggestions<br>
     * Editor can approve of decline suggestion<br>
     * Editor can delete suggestion<br>
+    * Editor can use pagination for articles<br>
 - On the suggestions page:<br>
     * Editor can view suggestion list<br>
     * Editor can filter suggestion by status<br>
