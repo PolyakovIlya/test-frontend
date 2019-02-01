@@ -59,7 +59,7 @@ class Suggestion extends Component {
 
 Suggestion.propTypes = {
     suggestion: PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
         status: PropTypes.string.isRequired
     }).isRequired,

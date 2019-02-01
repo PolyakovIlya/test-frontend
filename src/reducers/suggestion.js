@@ -36,7 +36,7 @@ const suggestions = (state = initialState, action) => {
 
         case suggestionConstants.UPDATE_SUGGESTION_SUCCESS:
             return state.map((item) => {
-                if (item.id !== parseInt(action.payload.data.id)) {
+                if (item.id !== action.payload.data.id) {
                     return item
                 }
 
@@ -53,7 +53,7 @@ const suggestions = (state = initialState, action) => {
             return state;
 
         case suggestionConstants.REMOVE_SUGGESTION_SUCCESS:
-            return state.filter((item) => (item.id !== parseInt(action.data.id)));
+            return state.filter((item) => (item.id !== action.data.id));
 
         case suggestionConstants.REMOVE_SUGGESTION_FAILURE:
             return {};

@@ -34,7 +34,7 @@ class Paragraph extends Component {
         const { index, articleId, handleSuggestionCreation } = this.props;
         const suggestion = {
             text: this.state.text,
-            articleId: parseInt(articleId),
+            articleId: articleId,
             status: 'pending',
             paragraphId: index
         };
