@@ -50,7 +50,7 @@ class ArticleBlock extends Component {
 
 ArticleBlock.propTypes = {
     article: PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         createdAt: PropTypes.string,
         paragraphs: PropTypes.array.isRequired

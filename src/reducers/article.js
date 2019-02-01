@@ -58,7 +58,7 @@ const articles = (state = initialState, action) => {
         case articleConstants.DELETE_ARTICLE_SUCCESS:
             return {
                 data: [
-                    ...state.data.filter((item) => item.id !== parseInt(action.payload.id))
+                    ...state.data.filter((item) => item.id !== action.payload.id)
                 ],
                 meta: {
                     ...state.meta,
