@@ -75,6 +75,9 @@ class Pagination extends Component {
     }
 
     render() {
+        const { pages } = this.props.pagination;
+        if (pages <= 1) return null;
+
         return (
             <div className="pagination">
                 {this.renderPrevious()}
